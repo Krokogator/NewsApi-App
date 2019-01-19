@@ -18,7 +18,16 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <restlet.version>2.4.0</restlet.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>maven-restlet</id>
+            <name>Public online Restlet repository</name>
+            <url>http://maven.restlet.org</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -29,6 +38,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- REST API calls -->
+        <!-- https://mvnrepository.com/artifact/org.restlet.jee/org.restlet-->
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet</artifactId>
+            <version>${restlet.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.restlet.jee/org.restlet.ext.servlet -->
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet.ext.jackson</artifactId>
+            <version>${restlet.version}</version>
+        </dependency>
+
+
+
+        <!-- TEST -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
