@@ -4,10 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TestService } from 'src/services/test.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NewsComponent } from './news/news.component';
+import { NewsDisplayComponent } from './news-display/news-display.component';
+import { NewsPickerComponent } from './news-picker/news-picker.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NewsComponent,
+    NewsDisplayComponent,
+    NewsPickerComponent,
   ],
   imports: [
     BrowserModule,
