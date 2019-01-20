@@ -25,3 +25,11 @@ mvnw spring-boot:run
 ```
 
 App will run on **localhost:8080** with documentation
+
+## Live versions
+
+Both client and server live version are available at:
+
+https://news-app-spring.herokuapp.com
+
+https://krokogator.github.io/
