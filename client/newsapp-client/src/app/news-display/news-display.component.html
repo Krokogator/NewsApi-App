@@ -1,5 +1,9 @@
-<p *ngFor = "let article of articles">
-  {{article.title}}
-</p>
+<div *ngIf = "newsPage">
+  {{newsPage.country}}
+  {{newsPage.category}}
+  <p *ngFor = "let article of newsPage.articles">
+    {{article.title}}
+  </p>
+</div>
 
 

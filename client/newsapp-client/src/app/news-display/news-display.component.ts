@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TestService } from 'src/services/test.service';
-import { Article } from 'src/models/article';
+import { TestService } from 'src/services/news.service';
+import { NewsPage } from 'src/models/newsPage';
 
 @Component({
   selector: 'app-news-display',
@@ -9,14 +9,19 @@ import { Article } from 'src/models/article';
 })
 export class NewsDisplayComponent implements OnInit {
 
-  private articles : Article[];
+  private newsPage : NewsPage;
+  private country : String;
+  private category : String;
 
-  constructor(private testService : TestService) { }
+  constructor(private testService : TestService) {
+    this.country = 'pl';
+    this.category = 'technology';
+  }
 
 
   ngOnInit(){
-    this.testService.getTest().subscribe( value => {
-      this.articles = value;
+    this.testService.getNewsPage(this.country, this.category).subscribe( value => {
+      this.newsPage = value;
       console.log(value);
     })
   }
