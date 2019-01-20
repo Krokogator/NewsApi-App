@@ -1,21 +1,20 @@
-package com.krokogator.newsapp.model;
+package com.krokogator.newsapp.model.newsapi;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.krokogator.newsapp.model.Article;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ArticleResponse implements Serializable {
+public class NewsResponse implements Serializable {
 
     private String status;
     private String totalResults;
     private ArrayList<Article> articles;
 
-    public ArticleResponse(){}
+    public NewsResponse(){}
 
-    public ArticleResponse(String status, String totalResults, ArrayList<Article> articles) {
+    public NewsResponse(String status, String totalResults, ArrayList<Article> articles) {
         this.status = status;
         this.totalResults = totalResults;
         this.articles = articles;

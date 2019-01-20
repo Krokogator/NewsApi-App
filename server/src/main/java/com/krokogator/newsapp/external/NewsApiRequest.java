@@ -1,6 +1,6 @@
 package com.krokogator.newsapp.external;
 
-import com.krokogator.newsapp.model.Article;
+import com.krokogator.newsapp.model.newsapi.Article;
 import com.krokogator.newsapp.resource.ArticleResponseResource;
 import org.restlet.data.Parameter;
 import org.restlet.engine.Engine;

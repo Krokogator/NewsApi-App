@@ -1,6 +1,7 @@
-package com.krokogator.newsapp.model;
+package com.krokogator.newsapp.model.newsapi;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -83,10 +84,12 @@ public class Article implements Serializable {
         this.publishedAt = publishedAt;
     }
 
+    @JsonProperty("content")
     public String getContent() {
         return content;
     }
 
+    @JsonProperty("source.name")
     public void setContent(String content) {
         this.content = content;
     }

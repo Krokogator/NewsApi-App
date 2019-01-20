@@ -1,6 +1,5 @@
-package com.krokogator.newsapp.model;
+package com.krokogator.newsapp.model.newsapi;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
