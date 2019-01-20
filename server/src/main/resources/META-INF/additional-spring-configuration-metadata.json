@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "api-url",
+      "type": "java.lang.String",
+      "description": "Main newsapi.org API url."
+    },
+    {
+      "name": "api-key",
+      "type": "java.lang.String",
+      "description": "Newsapi.org API key."
+    }
+  ] }

@@ -7,6 +7,7 @@ import org.restlet.engine.Engine;
 import org.restlet.engine.converter.ConverterHelper;
 import org.restlet.ext.jackson.JacksonConverter;
 import org.restlet.resource.ClientResource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,6 +15,14 @@ import java.util.List;
 
 @Component
 public class NewsApiRequest {
+
+    @Value( "${api-url}" )
+    private String newsApiUrl;
+
+    @Value( "${api-key}")
+    private String newsApiKey;
+
+
 
     public NewsApiRequest(){
         // Register serializer
@@ -30,8 +39,6 @@ public class NewsApiRequest {
 
         resource.addQueryParameters(parameterList);
 
-        System.out.println(resource.getStatus());
-
         // Creates a wrap for JSON into Object mapping
         ArticleResponseResource articleResource = resource.wrap(ArticleResponseResource.class);
 
@@ -40,10 +47,10 @@ public class NewsApiRequest {
 
     // Build new client resource for API call
     private ClientResource buildResource() {
-        ClientResource resource = new ClientResource("https://newsapi.org/v2/top-headlines");
+        ClientResource resource = new ClientResource(newsApiUrl);
         List<Parameter> parameterList = new ArrayList<>();
 
-        parameterList.add(new Parameter("apiKey", "af8f7e7a09234c869054b3e5a8a96cdc"));
+        parameterList.add(new Parameter("apiKey", newsApiKey));
         resource.addQueryParameters(parameterList);
 
         return resource;

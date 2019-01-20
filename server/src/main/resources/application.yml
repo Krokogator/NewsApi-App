@@ -1,2 +1,5 @@
 server:
   port: 8080
+
+api-url: https://newsapi.org/v2/top-headlines
+api-key: af8f7e7a09234c869054b3e5a8a96cdc

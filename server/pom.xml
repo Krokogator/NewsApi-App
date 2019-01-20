@@ -74,6 +74,13 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!-- Custom application.yml definitions -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
 
         <!-- TEST -->
 
