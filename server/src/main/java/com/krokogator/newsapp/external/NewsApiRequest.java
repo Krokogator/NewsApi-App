@@ -16,15 +16,16 @@ import java.util.List;
 @Component
 public class NewsApiRequest {
 
-    @Value( "${api-url}" )
     private String newsApiUrl;
 
-    @Value( "${api-key}")
     private String newsApiKey;
 
 
 
-    public NewsApiRequest(){
+    public NewsApiRequest(@Value("${api-url}") String newsApiUrl,
+                          @Value("${api-key}") String newsApiKey){
+        this.newsApiUrl = newsApiUrl;
+        this.newsApiKey = newsApiKey;
         // Register serializer
         List<ConverterHelper> converters = Engine.getInstance().getRegisteredConverters();
         converters.add(new JacksonConverter());
