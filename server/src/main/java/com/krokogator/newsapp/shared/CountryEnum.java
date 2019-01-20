@@ -1,4 +1,4 @@
-package com.krokogator.newsapp.controller;
+package com.krokogator.newsapp.shared;
 
 public enum CountryEnum {
     ae, ar, at, au, be, bg, br, ca, ch, cn, co, cu, cz, de, eg, fr, gb, gr, hk, hu, id, ie, il, in, it, jp, kr,

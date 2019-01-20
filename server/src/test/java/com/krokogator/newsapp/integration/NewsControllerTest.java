@@ -1,8 +1,7 @@
 package com.krokogator.newsapp.integration;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.krokogator.newsapp.controller.CategoryEnum;
-import com.krokogator.newsapp.controller.CountryEnum;
+import com.krokogator.newsapp.shared.CategoryEnum;
+import com.krokogator.newsapp.shared.CountryEnum;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
