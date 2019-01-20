@@ -1,6 +1,7 @@
 package com.krokogator.newsapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -59,18 +60,22 @@ public class Article implements Serializable {
         this.description = description;
     }
 
-    public String getUrl() {
+    @JsonProperty("articleUrl")
+    public String getArticleUrl() {
         return url;
     }
 
+    @JsonProperty("url")
     public void setUrl(String url) {
         this.url = url;
     }
 
+    @JsonProperty("imageUrl")
     public String getUrlToImage() {
         return urlToImage;
     }
 
+    @JsonProperty("urlToImage")
     public void setUrlToImage(String urlToImage) {
         this.urlToImage = urlToImage;
     }
@@ -83,10 +88,12 @@ public class Article implements Serializable {
         this.publishedAt = publishedAt;
     }
 
+    @JsonProperty("content")
     public String getContent() {
         return content;
     }
 
+    @JsonProperty("source.name")
     public void setContent(String content) {
         this.content = content;
     }
