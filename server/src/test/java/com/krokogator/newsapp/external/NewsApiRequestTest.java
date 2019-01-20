@@ -4,10 +4,7 @@ import com.krokogator.newsapp.model.newsapi.Article;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.restlet.resource.ResourceException;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -16,9 +13,6 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@TestPropertySource(properties = {
-        "api-url=https://newsapi.org/v2/top-headlines",
-        "api-key=af8f7e7a09234c869054b3e5a8a96cdc"})
 public class NewsApiRequestTest {
 
     @Test
