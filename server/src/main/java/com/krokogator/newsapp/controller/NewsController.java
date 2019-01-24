@@ -9,11 +9,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/news")
@@ -39,8 +39,11 @@ public class NewsController {
     @GetMapping("/{country}/{category}")
     public ResponseEntity<NewsPage> getNewsPage(
             @PathVariable CountryEnum country,
-            @PathVariable CategoryEnum category) {
-        NewsPage newsPage = articleService.getNewsPage(country.toString(), category.toString());
+            @PathVariable CategoryEnum category,
+            @RequestParam(required = false, defaultValue = "1") Integer page,
+            @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+        Pageable pageRequest = PageRequest.of(page, pageSize);
+        NewsPage newsPage = articleService.getNewsPage(country.toString(), category.toString(), pageRequest);
 
         return new ResponseEntity<>(newsPage, HttpStatus.OK);
     }
