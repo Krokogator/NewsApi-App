@@ -9,7 +9,7 @@ import { NewsPage } from 'src/models/newsPage';
 })
 export class NewsDisplayComponent implements OnInit {
 
-  private newsPage : NewsPage;
+  newsPage : NewsPage;
   private country : String;
   private category : String;
 

@@ -34,7 +34,7 @@ public class NewsController {
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 500, message = "Internal server error")
     })
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://krokogator.github.io")
     // RequestParams could be more flexible than PathVariables
     @GetMapping("/{country}/{category}")
     public ResponseEntity<NewsPage> getNewsPage(
