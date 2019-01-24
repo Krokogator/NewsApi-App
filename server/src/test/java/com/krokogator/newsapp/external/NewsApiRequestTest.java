@@ -5,6 +5,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.restlet.resource.ResourceException;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -15,10 +18,19 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class NewsApiRequestTest {
 
+    private final Pageable correctPage;
+    private final Pageable incorrectPage;
+
+    public NewsApiRequestTest() {
+        correctPage = PageRequest.of(0, 10);
+        // Cannot create PageRequest.of(x,y) with negative x or y, had to create custom impl
+        incorrectPage = new IncorrectPageableImpl();
+    }
+
     @Test
     public void givenCorrectArguments() {
         NewsApiRequest request = getCorrectRequest();
-        List<Article> articleList = request.getByCountryAndCategory("pl", "technology");
+        List<Article> articleList = request.getByCountryAndCategory("pl", "technology", correctPage);
 
         // Given correct values, list must not be null
         assertNotNull(articleList);
@@ -28,9 +40,21 @@ public class NewsApiRequestTest {
     }
 
     @Test
-    public void givenIncorrectArguments() {
+    public void givenIncorrectCountryAndCategoryArguments() {
         NewsApiRequest request = getCorrectRequest();
-        List<Article> articleList = request.getByCountryAndCategory("foo", "bar");
+        List<Article> articleList = request.getByCountryAndCategory("foo", "bar", correctPage);
+
+        // Given incorrect value, list must not be null
+        assertNotNull(articleList);
+
+        // Given incorrect value, list should not contain any values
+        assertEquals(0, articleList.size());
+    }
+
+    @Test
+    public void givenIncorrectPageArguments() {
+        NewsApiRequest request = getCorrectRequest();
+        List<Article> articleList = request.getByCountryAndCategory("pl", "technology", incorrectPage);
 
         // Given incorrect value, list must not be null
         assertNotNull(articleList);
@@ -42,13 +66,13 @@ public class NewsApiRequestTest {
     @Test(expected = ResourceException.class)
     public void givenIncorrectUrl() {
         NewsApiRequest request = getIncorrectUrlRequest();
-        request.getByCountryAndCategory("pl", "technology");
+        request.getByCountryAndCategory("pl", "technology", correctPage);
         }
 
     @Test(expected = ResourceException.class)
     public void givenIncorrectKey() {
         NewsApiRequest request = getIncorrectKeyRequest();
-        request.getByCountryAndCategory("pl", "technology");
+        request.getByCountryAndCategory("pl", "technology", correctPage);
     }
 
     private NewsApiRequest getCorrectRequest() {

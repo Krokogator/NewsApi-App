@@ -8,6 +8,7 @@ import org.restlet.engine.converter.ConverterHelper;
 import org.restlet.ext.jackson.JacksonConverter;
 import org.restlet.resource.ClientResource;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -31,12 +32,14 @@ public class NewsApiRequest {
         converters.add(new JacksonConverter());
     }
 
-    public List<Article> getByCountryAndCategory(String country, String category) {
+    public List<Article> getByCountryAndCategory(String country, String category, Pageable page) {
         ClientResource resource = buildResource();
 
         List<Parameter> parameterList = new ArrayList<>();
         parameterList.add(new Parameter("category", category));
         parameterList.add(new Parameter("country", country));
+        parameterList.add(new Parameter("page", String.valueOf(page.getPageNumber())));
+        parameterList.add(new Parameter("pageSize", String.valueOf(page.getPageSize())));
 
         resource.addQueryParameters(parameterList);
 
