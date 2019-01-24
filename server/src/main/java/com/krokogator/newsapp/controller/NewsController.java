@@ -1,9 +1,9 @@
 package com.krokogator.newsapp.controller;
 
-import com.krokogator.newsapp.shared.CategoryEnum;
-import com.krokogator.newsapp.shared.CountryEnum;
 import com.krokogator.newsapp.model.NewsPage;
 import com.krokogator.newsapp.service.ArticleService;
+import com.krokogator.newsapp.shared.CategoryEnum;
+import com.krokogator.newsapp.shared.CountryEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -41,9 +41,10 @@ public class NewsController {
             @PathVariable CountryEnum country,
             @PathVariable CategoryEnum category,
             @RequestParam(required = false, defaultValue = "1") Integer page,
-            @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+            @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+            @RequestParam(required = false) String searchPhrase) {
         Pageable pageRequest = PageRequest.of(page, pageSize);
-        NewsPage newsPage = articleService.getNewsPage(country.toString(), category.toString(), pageRequest);
+        NewsPage newsPage = articleService.getNewsPage(country.toString(), category.toString(), pageRequest, searchPhrase);
 
         return new ResponseEntity<>(newsPage, HttpStatus.OK);
     }

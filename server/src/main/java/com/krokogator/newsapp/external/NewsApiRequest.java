@@ -32,7 +32,7 @@ public class NewsApiRequest {
         converters.add(new JacksonConverter());
     }
 
-    public List<Article> getByCountryAndCategory(String country, String category, Pageable page) {
+    public List<Article> getByCountryAndCategory(String country, String category, Pageable page, String searchPhrase) {
         ClientResource resource = buildResource();
 
         List<Parameter> parameterList = new ArrayList<>();
@@ -40,6 +40,8 @@ public class NewsApiRequest {
         parameterList.add(new Parameter("country", country));
         parameterList.add(new Parameter("page", String.valueOf(page.getPageNumber())));
         parameterList.add(new Parameter("pageSize", String.valueOf(page.getPageSize())));
+        if (searchPhrase != null) parameterList.add(new Parameter("q", searchPhrase));
+
 
         resource.addQueryParameters(parameterList);
 

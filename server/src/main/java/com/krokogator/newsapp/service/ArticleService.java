@@ -17,11 +17,11 @@ public class ArticleService {
     @Autowired
     NewsApiRequest newsApiRequest;
 
-    public NewsPage getNewsPage(String country, String category, Pageable page) {
+    public NewsPage getNewsPage(String country, String category, Pageable page, String searchPhrase) {
 
         //Adapts newsapi.org article model to one specified by the client
         //Grants loose coupling and code transparency
-        List<IArticleAdapter> articles = newsApiRequest.getByCountryAndCategory(country, category, page).stream().map(ArticleAdapter::new).collect(Collectors.toList());
+        List<IArticleAdapter> articles = newsApiRequest.getByCountryAndCategory(country, category, page, searchPhrase).stream().map(ArticleAdapter::new).collect(Collectors.toList());
 
         return new NewsPage(country, category, articles);
     }
