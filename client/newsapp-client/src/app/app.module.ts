@@ -8,6 +8,7 @@ import { NewsComponent } from './news/news.component';
 import { NewsDisplayComponent } from './news-display/news-display.component';
 import { NewsPickerComponent } from './news-picker/news-picker.component';
 import { NewsCategoryPickerComponent } from './news-category-picker/news-category-picker.component';
+import { NewsSearchComponent } from './news-search/news-search.component'
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NewsCategoryPickerComponent } from './news-category-picker/news-categor
     NewsDisplayComponent,
     NewsPickerComponent,
     NewsCategoryPickerComponent,
+    NewsSearchComponent
   ],
   imports: [
     BrowserModule,

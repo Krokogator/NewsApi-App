@@ -12,6 +12,8 @@ export class NewsComponent implements OnInit {
   newsPage : NewsPage;
 
   private country : String;
+  private category : String;
+  private searchPhrase : String;
 
   constructor(private newsService : NewsService) {
     this.country = 'pl';
@@ -20,10 +22,19 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onCategoryChanged(category : String){
-    this.newsService.getNewsPage(this.country, category.toLowerCase()).subscribe( value => {
+  public onCategoryChanged(category : String) {
+    this.category = category.toLowerCase();
+    this.reloadNews();
+  }
+
+  public onSearch(searchPhrase : String) {
+    this.searchPhrase = searchPhrase;
+    this.reloadNews();
+  }
+
+  private reloadNews() : void {
+    this.newsService.getNewsPage(this.country, this.category, this.searchPhrase).subscribe( value => {
       this.newsPage = value;
-      console.log(value);
     })
   }
 

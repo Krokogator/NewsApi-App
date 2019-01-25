@@ -11,8 +11,10 @@ export class NewsService {
     
     constructor(private http: HttpClient) {}
     
-    getNewsPage(country : String, category : String): Observable<NewsPage> {
-        return this.http.get(api + '/news/'+ country +'/' + category)
+    getNewsPage(country : String, category : String, searchPhrase? : String): Observable<NewsPage> {
+        var endpoint = '/news/'+ country +'/' + category;
+        if (searchPhrase) {  endpoint += '?searchPhrase=' + searchPhrase }
+        return this.http.get(api + endpoint)
         .pipe(
             map((data: String) => new NewsPage(data))
         );
