@@ -7,7 +7,7 @@ import { api } from "src/shared/global-vars";
 import { NewsPage } from "src/models/newsPage";
 
 @Injectable()
-export class TestService {
+export class NewsService {
     
     constructor(private http: HttpClient) {}
     

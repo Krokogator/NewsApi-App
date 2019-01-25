@@ -2,5 +2,5 @@
   news works!
 </p>
 
-<app-news-display></app-news-display>
-<app-news-picker></app-news-picker>
+<app-news-category-picker (selectedCategoryEmitter)="onCategoryChanged($event)"></app-news-category-picker>
+<app-news-display [newsPage]="newsPage"></app-news-display>

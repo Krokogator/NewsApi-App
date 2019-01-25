@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { TestService } from 'src/services/news.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { NewsPage } from 'src/models/newsPage';
 
 @Component({
@@ -9,21 +8,13 @@ import { NewsPage } from 'src/models/newsPage';
 })
 export class NewsDisplayComponent implements OnInit {
 
-  private newsPage : NewsPage;
-  private country : String;
-  private category : String;
+  @Input()
+  newsPage : NewsPage;
 
-  constructor(private testService : TestService) {
-    this.country = 'pl';
-    this.category = 'technology';
+  constructor(){
   }
 
-
-  ngOnInit(){
-    this.testService.getNewsPage(this.country, this.category).subscribe( value => {
-      this.newsPage = value;
-      console.log(value);
-    })
+  ngOnInit() {
   }
 
 }
